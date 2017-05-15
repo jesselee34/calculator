@@ -26,7 +26,10 @@ test('Route /add: controller Function: Given an "operands" parameter that is not
 
 test('Route /add: controller Function: Given a proper "operands" parameter, should return the success object.', (assert) => {
   let args = '5,5';
-  let actual = controller(args);
+  let actual = () => controller(args);
+  assert.doesNotThrow(actual);
+
+  actual = controller(args);
   let expected = {
     operands: [5, 5],
     operation: "add",

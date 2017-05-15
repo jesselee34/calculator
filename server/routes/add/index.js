@@ -6,10 +6,9 @@ const controller = require('./controller');
 const router = express.Router();
 
 // Handle GET requests
-router.get('/', (res, req) => {
+router.get('/', (req, res) => {
   let response;
-  let status;
-  let args = res.query.operands;
+  let args = req.query.operands;
   try {
     // Success
     response = controller(args);
@@ -30,8 +29,6 @@ router.get('/', (res, req) => {
         message: 'There was an unkown internal server error. Please try again later.'
       };
     }
-
-    return;
   }
 
   res.json(response);

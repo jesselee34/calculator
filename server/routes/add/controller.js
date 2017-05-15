@@ -1,3 +1,6 @@
+const makeNumbers = require('../../modules/make-numbers');
+const add = require('../../modules/add');
+
 const controller = (args) => {
   let error;
   
@@ -13,7 +16,7 @@ const controller = (args) => {
   }
 
   // Check the args to make sure it is a comma separated string of numbers.
-  if ( /^(\d+.?\d,)+(\d+.?\d)+$/.test(args) === false ) {
+  if ( /^(\d+(.{1}\d+)?(,{1}(\d+(.{1}\d+)?))*)+$/.test(args) === false ) {
     error = {
       code: '400-2',
       status: 'Bad Request',
